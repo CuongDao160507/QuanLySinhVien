@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Quan ly sinh vien</title>
+</head>
+<body>
+    <h1>Quan ly sinh vien</h1>
+    <table border="1">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Ma sinh vien</th>
+            <th>Ho ten</th>
+            <th>Gioi tinh</th>
+            <th>GPA</th>
+            <th>Trang thai</th>
+            <th>Ten lop hoc</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="sv : ${listSV}" th:object="${sv}">
+            <td th:text="*{id}"></td>
+            <td th:text="*{maSinhVien}"></td>
+            <td th:text="*{hoTen}"></td>
+            <td th:text="*{gioiTinh == true ? 'Nam' : 'Nu'}"></td>
+            <td th:text="*{gpa}"></td>
+            <td th:text="*{trangThai == true ? 'Dang hoc' : 'Da tot nghiep'}"></td>
+            <td th:text="*{lopHoc.tenLopHoc}"></td>
+        </tr>
+        </tbody>
+    </table>
+</body>
+</html>

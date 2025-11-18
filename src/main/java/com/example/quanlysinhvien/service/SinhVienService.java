@@ -4,9 +4,11 @@ import com.example.quanlysinhvien.entity.SinhVien;
 import com.example.quanlysinhvien.repository.LopHocRepository;
 import com.example.quanlysinhvien.repository.SinhVienRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service
 public class SinhVienService {
     @Autowired
     LopHocRepository lopHocRepository;
