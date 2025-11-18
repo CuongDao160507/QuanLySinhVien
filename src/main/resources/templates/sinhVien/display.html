@@ -59,6 +59,10 @@
             <td th:text="*{gpa}"></td>
             <td th:text="*{trangThai == true ? 'Dang hoc' : 'Da tot nghiep'}"></td>
             <td th:text="*{lopHoc.tenLopHoc}"></td>
+            <td>
+                <button><a th:href="@{|/sinh-vien/delete/*{id}|}">Delete</a></button>
+                <button><a th:href="@{|/sinh-vien/view-update/*{id}|}">View Update</a></button>
+            </td>
         </tr>
         </tbody>
     </table>

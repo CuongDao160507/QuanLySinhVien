@@ -7,10 +7,7 @@ import com.example.quanlysinhvien.service.SinhVienService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -38,6 +35,19 @@ public class SinhVienController {
     @PostMapping("/add")
     public String add(@ModelAttribute("sv") SinhVien sinhVien) {
         sinhVienService.addSinhVien(sinhVien);
+        return "redirect:/sinh-vien/display";
+    }
+
+    @GetMapping("/view-update/{id}")
+    public String viewUpdate(@PathVariable("id") Integer id, Model model) {
+        model.addAttribute("sv", sinhVienService.findSinhVienById(id));
+        return "sinhVien/viewUpdate";
+    }
+
+    @PostMapping("/update/{id}")
+    public String update(@PathVariable("id") Integer id,@ModelAttribute("sv") SinhVien sinhVien) {
+        sinhVien.setId(id);
+        sinhVienService.updateSinhVien(sinhVien);
         return "redirect:/sinh-vien/display";
     }
 }

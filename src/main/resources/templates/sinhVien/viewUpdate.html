@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Quan ly sinh vien</title>
+</head>
+<body>
+<form th:action="@{|/sinh-vien/update/${sv.id}|}" method="post" th:object="${sv}">
+    <p>
+        Ma sinh vien:
+        <input type="text" th:field="*{maSinhVien}">
+    </p>
+    <p>
+        Ho ten:
+        <input type="text" th:field="*{hoTen}">
+    </p>
+    <p>
+        Gioi tinh:
+        <input type="radio" th:field="*{gioiTinh}" th:value="true"> Nam
+        <input type="radio" th:field="*{gioiTinh}" th:value="false"> Nu
+    </p>
+    <p>
+        GPA:
+        <input type="number" th:field="*{gpa}">
+    </p>
+    <p>
+        Trang thai:
+        <input type="radio" th:field="*{trangThai}" th:value="true"> Dang hoc
+        <input type="radio" th:field="*{trangThai}" th:value="false"> Da tot nghiep
+    </p>
+    <p>
+        Ten lop hoc:
+        <select th:field="*{lopHoc}">
+            <option th:each="lh : ${listLH}" th:value="${lh.id}" th:label="${lh.tenLopHoc}"></option>
+        </select>
+    </p>
+    <button>Update</button>
+</form>
+</body>
+</html>
