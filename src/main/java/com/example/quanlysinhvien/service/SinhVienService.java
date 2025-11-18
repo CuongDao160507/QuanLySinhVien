@@ -24,7 +24,7 @@ public class SinhVienService {
         sinhVienRepository.save(sinhVien);
     }
 
-    public List<SinhVien> findSinhVienById(Integer id) {
+    public SinhVien findSinhVienById(Integer id) {
         return sinhVienRepository.findById(id).orElse(null);
     }
 
