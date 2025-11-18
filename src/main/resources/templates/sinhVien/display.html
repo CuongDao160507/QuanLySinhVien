@@ -10,30 +10,36 @@
         <p>
             Ma sinh vien:
             <input type="text" th:field="*{maSinhVien}">
+            <i th:errors="*{maSinhVien}"></i>
         </p>
         <p>
             Ho ten:
             <input type="text" th:field="*{hoTen}">
+            <i th:errors="*{hoTen}"></i>
         </p>
         <p>
             Gioi tinh:
             <input type="radio" th:field="*{gioiTinh}" th:value="true"> Nam
             <input type="radio" th:field="*{gioiTinh}" th:value="false"> Nu
+            <i th:errors="*{gioiTinh}"></i>
         </p>
         <p>
             GPA:
             <input type="number" th:field="*{gpa}">
+            <i th:errors="*{gpa}"></i>
         </p>
         <p>
             Trang thai:
             <input type="radio" th:field="*{trangThai}" th:value="true"> Dang hoc
             <input type="radio" th:field="*{trangThai}" th:value="false"> Da tot nghiep
+            <i th:errors="*{trangThai}"></i>
         </p>
         <p>
             Ten lop hoc:
             <select th:field="*{lopHoc}">
                 <option th:each="lh : ${listLH}" th:value="${lh.id}" th:label="${lh.tenLopHoc}"></option>
             </select>
+            <i th:errors="*{lopHoc}"></i>
         </p>
         <button>Add</button>
     </form>

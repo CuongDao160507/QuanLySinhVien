@@ -4,9 +4,11 @@ import com.example.quanlysinhvien.entity.LopHoc;
 import com.example.quanlysinhvien.entity.SinhVien;
 import com.example.quanlysinhvien.repository.LopHocRepository;
 import com.example.quanlysinhvien.service.SinhVienService;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -33,7 +35,11 @@ public class SinhVienController {
     }
 
     @PostMapping("/add")
-    public String add(@ModelAttribute("sv") SinhVien sinhVien) {
+    public String add(@Valid @ModelAttribute("sv") SinhVien sinhVien, BindingResult result, Model model) {
+        if (result.hasErrors()) {
+            model.addAttribute("listSV", sinhVienService.findAllSinhVien());
+            return "sinhVien/display";
+        }
         sinhVienService.addSinhVien(sinhVien);
         return "redirect:/sinh-vien/display";
     }
