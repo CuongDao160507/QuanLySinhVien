@@ -7,12 +7,17 @@
 <body>
 <form th:action="@{|/sinh-vien/update/${sv.id}|}" method="post" th:object="${sv}">
     <p>
+        ID: <h3 th:field="*{id}"></h3>
+    </p>
+    <p>
         Ma sinh vien:
         <input type="text" th:field="*{maSinhVien}">
+        <i th:errors="*{maSinhVien}"></i>
     </p>
     <p>
         Ho ten:
         <input type="text" th:field="*{hoTen}">
+        <i th:errors="*{hoTen}"></i>
     </p>
     <p>
         Gioi tinh:
@@ -22,6 +27,7 @@
     <p>
         GPA:
         <input type="number" th:field="*{gpa}">
+        <i th:errors="*{gpa}"></i>
     </p>
     <p>
         Trang thai:
@@ -33,6 +39,7 @@
         <select th:field="*{lopHoc}">
             <option th:each="lh : ${listLH}" th:value="${lh.id}" th:label="${lh.tenLopHoc}"></option>
         </select>
+        <i th:errors="*{lopHoc}"></i>
     </p>
     <button>Update</button>
 </form>

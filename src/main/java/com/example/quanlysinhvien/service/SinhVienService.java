@@ -4,6 +4,8 @@ import com.example.quanlysinhvien.entity.SinhVien;
 import com.example.quanlysinhvien.repository.LopHocRepository;
 import com.example.quanlysinhvien.repository.SinhVienRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -34,6 +36,10 @@ public class SinhVienService {
 
     public void deleteSinhVien(Integer id) {
         sinhVienRepository.deleteById(id);
+    }
+
+    public Page<SinhVien> findAll(Pageable pageable) {
+        return sinhVienRepository.findAll(pageable);
     }
 
 }
