@@ -3,45 +3,91 @@
 <head>
     <meta charset="UTF-8">
     <title>Quan ly sinh vien</title>
+
+    <!-- Bootstrap 5 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
-<body>
-<form th:action="@{|/sinh-vien/update/${sv.id}|}" method="post" th:object="${sv}">
-    <p>
-        ID: <h3 th:field="*{id}"></h3>
-    </p>
-    <p>
-        Ma sinh vien:
-        <input type="text" th:field="*{maSinhVien}">
-        <i th:errors="*{maSinhVien}"></i>
-    </p>
-    <p>
-        Ho ten:
-        <input type="text" th:field="*{hoTen}">
-        <i th:errors="*{hoTen}"></i>
-    </p>
-    <p>
-        Gioi tinh:
-        <input type="radio" th:field="*{gioiTinh}" th:value="true"> Nam
-        <input type="radio" th:field="*{gioiTinh}" th:value="false"> Nu
-    </p>
-    <p>
-        GPA:
-        <input type="number" th:field="*{gpa}">
-        <i th:errors="*{gpa}"></i>
-    </p>
-    <p>
-        Trang thai:
-        <input type="radio" th:field="*{trangThai}" th:value="true"> Dang hoc
-        <input type="radio" th:field="*{trangThai}" th:value="false"> Da tot nghiep
-    </p>
-    <p>
-        Ten lop hoc:
-        <select th:field="*{lopHoc}">
-            <option th:each="lh : ${listLH}" th:value="${lh.id}" th:label="${lh.tenLopHoc}"></option>
-        </select>
-        <i th:errors="*{lopHoc}"></i>
-    </p>
-    <button>Update</button>
-</form>
+
+<body class="bg-light">
+
+<div class="container py-4">
+
+    <h1 class="text-center mb-4">Cap nhat sinh vien</h1>
+
+    <div class="card shadow-sm">
+        <div class="card-body">
+
+            <form th:action="@{|/sinh-vien/update/${sv.id}|}" method="post" th:object="${sv}">
+
+                <div class="mb-3">
+                    <label class="form-label">ID:</label>
+                    <h5 class="fw-bold" th:text="*{id}"></h5>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">Ma sinh vien:</label>
+                    <input type="text" class="form-control" th:field="*{maSinhVien}">
+                    <i class="text-danger small" th:errors="*{maSinhVien}"></i>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">Ho ten:</label>
+                    <input type="text" class="form-control" th:field="*{hoTen}">
+                    <i class="text-danger small" th:errors="*{hoTen}"></i>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label d-block">Gioi tinh:</label>
+
+                    <div class="form-check form-check-inline">
+                        <input type="radio" class="form-check-input" th:field="*{gioiTinh}" th:value="true">
+                        <label class="form-check-label">Nam</label>
+                    </div>
+
+                    <div class="form-check form-check-inline">
+                        <input type="radio" class="form-check-input" th:field="*{gioiTinh}" th:value="false">
+                        <label class="form-check-label">Nu</label>
+                    </div>
+
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">GPA:</label>
+                    <input type="number" class="form-control" th:field="*{gpa}">
+                    <i class="text-danger small" th:errors="*{gpa}"></i>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label d-block">Trang thai:</label>
+
+                    <div class="form-check form-check-inline">
+                        <input type="radio" class="form-check-input" th:field="*{trangThai}" th:value="true">
+                        <label class="form-check-label">Dang hoc</label>
+                    </div>
+
+                    <div class="form-check form-check-inline">
+                        <input type="radio" class="form-check-input" th:field="*{trangThai}" th:value="false">
+                        <label class="form-check-label">Da tot nghiep</label>
+                    </div>
+
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">Ten lop hoc:</label>
+                    <select class="form-select" th:field="*{lopHoc}">
+                        <option th:each="lh : ${listLH}" th:value="${lh.id}" th:label="${lh.tenLopHoc}"></option>
+                    </select>
+                    <i class="text-danger small" th:errors="*{lopHoc}"></i>
+                </div>
+
+                <button class="btn btn-warning w-100">Update</button>
+
+            </form>
+
+        </div>
+    </div>
+
+</div>
+
 </body>
 </html>
