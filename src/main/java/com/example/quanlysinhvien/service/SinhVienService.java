@@ -19,4 +19,21 @@ public class SinhVienService {
     public List<SinhVien> findAllSinhVien() {
         return sinhVienRepository.findAll();
     }
+
+    public void addSinhVien(SinhVien sinhVien) {
+        sinhVienRepository.save(sinhVien);
+    }
+
+    public List<SinhVien> findSinhVienById(Integer id) {
+        return sinhVienRepository.findById(id).orElse(null);
+    }
+
+    public void updateSinhVien(SinhVien sinhVien) {
+        sinhVienRepository.save(sinhVien);
+    }
+
+    public void deleteSinhVien(Integer id) {
+        sinhVienRepository.deleteById(id);
+    }
+
 }
