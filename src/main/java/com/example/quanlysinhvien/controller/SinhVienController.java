@@ -50,4 +50,10 @@ public class SinhVienController {
         sinhVienService.updateSinhVien(sinhVien);
         return "redirect:/sinh-vien/display";
     }
+
+    @GetMapping("/delete/{id}")
+    public String delete(@PathVariable("id") Integer id) {
+        sinhVienService.deleteSinhVien(id);
+        return "redirect:/sinh-vien/display";
+    }
 }
